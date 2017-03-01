@@ -1,0 +1,14 @@
+# Acply框架 目录级 url rewrite规则
+RewriteEngine on
+
+#重写后的基准路径，相对于网站根目录
+#RewriteBase /
+
+# 将URL路径全部作为字符串给脚本,对文件的请求忽略，只对目录的请求进行重写
+
+RewriteCond %{REQUEST_FILENAME} !.*\.\w+$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?acplyaccept=$1 [QSA]
+
+# 安全性考虑：不允许列表目录内容
+Options -Indexes +FollowSymLinks
