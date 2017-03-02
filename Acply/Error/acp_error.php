@@ -2,7 +2,7 @@
 
 /**
  * 扩展 PHP 内置的异常处理类
- * 
+ *
  * @copyright Copyright 2014 listenlin. All rights reserved.
  * @author listenlin <listenlin521@foxmail.com>
  * @version 1.0
@@ -37,9 +37,9 @@ class Acp_error extends Exception
 
         $msg = array(
             "时间: {$this->time}",
-        	"错误描述: $message",
-        	"信息: {$this->file}({$this->line})",
-        	"异常点调用栈：".$this->getTraceAsString(),
+            "错误描述: $message",
+            "信息: {$this->file}({$this->line})",
+            "异常点调用栈：".$this->getTraceAsString(),
         );
         Acp_log::log($this->txt[$type], $msg);
     }
@@ -52,23 +52,18 @@ class Acp_error extends Exception
     {
         return $this->type;
     }
-    static public function errorHandle($e)
+    public static function errorHandle($e)
     {
         $cfg = Acp_config::getConfig();
-        if ($cfg->debug === true)
-        {
+        if ($cfg->debug === true) {
             $show = $e->getMessage();
             Acp_response::start('');
-        }
-        else
-        {
+        } else {
             $show = '抱歉，出现错误，请重试。';
         }
-        switch (true)
-        {
+        switch (true) {
             case $e instanceof Acp_error:
-                switch ($e->getType())
-                {
+                switch ($e->getType()) {
                     case Acp_error::PROGRAM:
                         Acp_response::show($show);
                         break;
@@ -107,7 +102,7 @@ class Acp_error extends Exception
         }
         Acp_response::end();
     }
-    static public function phpErrorHandler($errno, $errstr, $errfile, $errline, array $errcontext)
+    public static function phpErrorHandler($errno, $errstr, $errfile, $errline, array $errcontext)
     {
         // $cfg = Acp_config::getConfig();
         // if ($cfg->debug === true) {
@@ -123,7 +118,7 @@ class Acp_error extends Exception
         // }
         return false;
     }
-    static public function shutdown()
+    public static function shutdown()
     {
     }
 }

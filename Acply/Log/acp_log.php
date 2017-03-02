@@ -29,8 +29,7 @@ class Acp_log extends Acp_base
         $this->where = strtr($this->where, '\\', '/');
         $this->where = rtrim($this->where, '/') . '/';
 
-        if (!is_dir($this->where))
-        {
+        if (!is_dir($this->where)) {
             mkdir($this->where);
         }
     }
@@ -44,27 +43,21 @@ class Acp_log extends Acp_base
      * @param 后面的参数个数不定，全为string类型
      * @return void
      */
-    static public function log($dest, $arg)
+    public static function log($dest, $arg)
     {
         $args = is_array($arg) ? $arg : array_slice(func_get_args(), 1);
 
-        if (is_string($dest))
-        {
-            if (self::$logid === null)
-            {
+        if (is_string($dest)) {
+            if (self::$logid === null) {
                 self::$logid = new Acp_log();
             }
             $content = Acp_parse_json::encodeJSON($args);
             // 去除换行符和回车符，以免在用file函数读取时出现错误。
             $content = preg_replace('/[\r\n]+/', ' ', $content);
             file_put_contents(self::$logid->where . date('Y-m-d') . ".$dest.log", $content . PHP_EOL, FILE_APPEND);
-        }
-        elseif ($dest instanceof Acp_table)
-        {
+        } elseif ($dest instanceof Acp_table) {
             return $dest->fields(true)->value($args)->insert();
-        }
-        else
-        {
+        } else {
             throw new Acp_error('记录日志时输入参数错误！', Acp_error::PARAM);
         }
     }
@@ -74,7 +67,8 @@ class Acp_log extends Acp_base
      * @param  string $file_path 文件路劲
      * @return array 日志信息
      */
-    static public function read_log($file_path) {
+    public static function read_log($file_path)
+    {
         $return = array();
         if (file_exists($file_path)) {
             $file = file($file_path);
@@ -82,7 +76,7 @@ class Acp_log extends Acp_base
             foreach ($file as $fline) {
                 $fline = trim($fline);
                 if (strlen($fline) > 0) {
-                    $return[] = json_decode($fline, TRUE);
+                    $return[] = json_decode($fline, true);
                 }
             }
 
@@ -97,7 +91,8 @@ class Acp_log extends Acp_base
      * @param  miexd $log_msg 日志主要信息
      * @return miexd 组合后的日志信息
      */
-    static public function log_template($log_msg) {
+    public static function log_template($log_msg)
+    {
         if (!empty($log_msg)) {
             if (is_array($log_msg) || is_object(($log_msg))) {
                 $log_msg = json_encode($log_msg);
@@ -113,6 +108,6 @@ class Acp_log extends Acp_base
             return $msg;
         }
 
-        return FALSE;
+        return false;
     }
 }

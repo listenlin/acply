@@ -8,4 +8,4 @@ class Site extends Acp_control
             'message' => 'hello Acply!'
         ]);
     }
-} 
+}
