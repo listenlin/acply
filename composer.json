@@ -1,15 +1,13 @@
 {
     "name": "listenlin/acply",
-    "description": "A framework developed independently for learning PHP",
+    "description": "A framework developed independently for learning PHP 7.1",
     "homepage": "https://github.com/listenlin/acply",
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "listenlin",
-            "email": "listenlin521@foxmail.com"
-        }
-    ],
+    "authors": [{
+        "name": "listenlin",
+        "email": "listenlin521@foxmail.com"
+    }],
     "minimum-stability": "stable",
     "support": {
         "issues": "https://github.com/listenlin/acply/issues"
