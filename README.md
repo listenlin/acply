@@ -32,5 +32,7 @@ Acply PHP框架
 ## Docker使用
 Docker目录下，可以使用`docker build`建立配套的镜像。
 ```
-
+cd Docker
+docker build -t acply ./
+docker run -v your_acply_path:/var/www/ -p 80:80 acply
 ```
