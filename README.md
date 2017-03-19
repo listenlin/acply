@@ -29,8 +29,11 @@ Acply PHP框架
 4. 完善一个小案例。
 5. ……
 
-## Docker使用
-Docker目录下，可以使用`docker build`建立配套的镜像。
+## 使用Docker搭建运行环境
+
+安装Docker后，可简单执行`./Bin/start.sh`脚本即可。
+
+也可手动去Docker目录下，使用`docker build`建立配套的镜像，再启动容器。
 ```
 cd Docker
 docker build -t acply ./
