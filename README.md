@@ -28,3 +28,14 @@ Acply PHP框架
 3. 改为使用php7.1及以上的新特性开发，不兼容5.x和7.x及以下版本。
 4. 完善一个小案例。
 5. ……
+
+## 使用Docker搭建运行环境
+
+安装Docker后，可简单执行`./Bin/start.sh`脚本即可。
+
+也可手动去Docker目录下，使用`docker build`建立配套的镜像，再启动容器。
+```
+cd Docker
+docker build -t acply ./
+docker run -v your_acply_path:/var/www/ -p 80:80 acply
+```
