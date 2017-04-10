@@ -44,7 +44,7 @@ class Container
 
     public function get($class)
     {
-        if (isset($this->singletons[$class])) {
+        if (isset($this->singleObjects[$class])) {
             return $this->singleObjects[$class];
         }
 

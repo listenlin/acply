@@ -13,5 +13,5 @@ namespace Acply\di;
  */
 interface ResolveDependencyInterface
 {
-
+    public function resolve(string $class, array $definition);
 }

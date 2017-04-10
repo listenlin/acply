@@ -14,7 +14,7 @@ namespace Acply\di;
 class ResolveDependency implements ResolveDependencyInterface
 {
     /**
-     * 某个类的依赖配置信息
+     * 缓存某个类的依赖配置信息
      * [
      *     'class' => 'someNameapce\someClassName',
      *     ''
@@ -23,4 +23,9 @@ class ResolveDependency implements ResolveDependencyInterface
      * @var array
      */
     protected $dependencies = [];
+
+    public function resolve(string $class, array $definition)
+    {
+
+    }
 }
